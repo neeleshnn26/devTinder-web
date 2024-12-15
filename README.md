@@ -13,14 +13,16 @@
 - Create a login component.
 - Insatll axios: for api calling
 - CORS- install cors in backend => app cors middleware in backend with configuration : origin , credentials:true
-- whenever you are making api call with axios pass:{withCredentials:true}
+- whenever you are making api call with axios pass:{withCredentials:true}, this is because then only our cookie will be visible on the frontend
 - install redux toolkit
 - configureStore=>Provider=>createSlice=>add Reducer to store 
-
-
 - Body
     NavBar
       Route=/ => feed
       Route=/login =>Login
       Route=/profile =>Profile
     Footer 
+
+## Cant navigate to other routes without loging in---------
+
+- dekho esa hora hai ki kn hum login krre hai to ek to backend se ek token create ho jaata hai, aur uss token k through hum user ko authenticate krwa skte hai , humne Body component k andar hi logic likha hai ki jb bhi hamara body component re-render hoga to hum ek api call krenge profile/view waali , aur vo tabhi khulegi jb hamare pass token hoga aur token tb hoga jb humne login kia hoga kyuki login krne se hi token milta hai, aur hamare saare routes ka parent route body hai to hum aur saare routex tb hi acess kr paayenge jb haamre pass token hoga , aur token tb hoga jb hum login krenge , isliye bina ogin kre hum koi bhi route ko access nhi kr paayenge.
