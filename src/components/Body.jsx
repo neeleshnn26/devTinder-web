@@ -38,7 +38,7 @@ import { useEffect } from "react"
  <div>
     <NavBar/>
     <Outlet/>
-    <Footer/>
+    {/* <Footer/> */}
  </div>
   )
 }

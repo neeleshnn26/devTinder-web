@@ -24,7 +24,7 @@ const Login = () => {
           catch(err)
           {
             setError(err?.response?.data || "something went wrong")
-           console.log(err)
+           
           }
     }
 

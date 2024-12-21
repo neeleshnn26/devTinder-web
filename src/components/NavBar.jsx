@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useNavigate} from "react-router"
+import { Link, useNavigate} from "react-router-dom"
 import { BASE_URL } from "../utils/constants"
 import { removeUser } from "../utils/userSlice"
 
@@ -30,15 +30,15 @@ const NavBar = () => {
       <a className="btn btn-ghost text-xl" >👨‍💻 DevTinder</a>
     </div>
 
-    {user &&(
+    { user && user.firstName &&(
       <div className="flex-none gap-2">
-      <div className="form control">Welcome,{user.firstName}</div>
+      <div className="form control"><span className="">Welcome,</span> <span className="font-bold ">{user.firstName}</span></div>
    <div className="dropdown dropdown-end mx-5">
      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-       <div className="w-10 rounded-full">
+       <div className="rounded-md">
          <img
            alt="Tailwind CSS Navbar component"
-           src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+           src={user.photoUrl} />
        </div>
      </div>
      <ul
@@ -47,10 +47,12 @@ const NavBar = () => {
        <li>
          <Link to="/profile" className="justify-between">
            Profile
-           <span className="badge">New</span>
+           {/* <span className="badge">New</span> */}
          </Link>
-       </li>
-       <li><a>Settings</a></li>
+       </li> 
+       <li>
+        <Link to="/connections">Connections</Link>
+        </li>
        <li><a onClick={handleLogout} >Logout</a></li>
      </ul>
    </div>
