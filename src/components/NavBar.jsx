@@ -23,11 +23,15 @@ const NavBar = () => {
          
        }
     }
-   
+
+    
+  //  const handleOnClick=()=>{
+  //      navigate("/")
+  //  }
   return (
     <div className="navbar bg-base-300">
     <div className="flex-1">
-      <a className="btn btn-ghost text-xl" >👨‍💻 DevTinder</a>
+      <Link className="btn btn-ghost text-xl" >👨‍💻 DevTinder</Link>
     </div>
 
     { user && user.firstName &&(
@@ -52,6 +56,9 @@ const NavBar = () => {
        </li> 
        <li>
         <Link to="/connections">Connections</Link>
+        </li>
+        <li>
+        <Link to="/requests">Requests</Link>
         </li>
        <li><a onClick={handleLogout} >Logout</a></li>
      </ul>

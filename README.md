@@ -26,7 +26,7 @@
   - Edit profile feature
   - Show toast on saving the profile
   - created /user/connection 
-  - 
+  - created connection request page
    
 
 ## Cant navigate to other routes without loging in---------

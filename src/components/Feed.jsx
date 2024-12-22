@@ -7,6 +7,7 @@ import UserCard from "./UserCard"
 
 const Feed = () => {
   const feed=useSelector((store)=>store.feed)
+  console.log(feed)
   const dispatch=useDispatch()
 
 
@@ -17,20 +18,29 @@ const Feed = () => {
     } 
     catch(err)
     {
-
+console.log(err)
     }
    }
    useEffect(()=>{
      getFeed()
    },[])
 
- 
-  return (
-    feed &&(
-      <div className="flex justify-center my-20">
-    <UserCard user={feed[0]}/>
-   </div>
-    ))
-}
+   if(!feed || !Array.isArray(feed)) {
+    return (
+      <h1 className="text-3xl font-bold text-pink-500">Loading feed...</h1>
+    );
+  }
 
+  if (feed.length === 0) {
+    return (
+      <h1 className="text-3xl font-bold text-gray-500 flex justify-center items-center mt-40">No feed available</h1>
+    );
+  }
+
+  return (
+    <div className="flex justify-center my-20">
+      <UserCard user={feed[0]} />
+    </div>
+  );
+};
 export default Feed
