@@ -9,10 +9,11 @@ const feedSlice=createSlice({
        //If addFeed is intended to append to the feed instead of overwriting it, 
        // use state.push for mutation (Redux Toolkit uses Immer under the hood to handle immutability)
       },
-      removeFeed:()=>{
-        return null
+      removeUserFromFeed:(state,action)=>{
+        const newFeed= state.filter((user)=>user._id != action.payload)
+        return newFeed
       }
     }
 })
-export const {addFeed}=feedSlice.actions
+export const {addFeed,removeUserFromFeed}=feedSlice.actions
 export default feedSlice.reducer

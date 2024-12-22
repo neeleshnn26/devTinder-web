@@ -27,6 +27,10 @@
   - Show toast on saving the profile
   - created /user/connection 
   - created connection request page
+  - accept/reject connection request
+  - send/ignore user card from feed
+  - created signup 
+  
    
 
 ## Cant navigate to other routes without loging in---------

@@ -8,7 +8,10 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
     const[emailId,setEmailId]=useState("");
     const[password,setPassword]=useState("");
+    const[firstName,setFirstName]=useState("");
+    const[lastName,setLastName]=useState("");
     const[error,setError]=useState("")
+    const[toggleform,setToggleForm]=useState(false)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const handleLogin= async ()=>{
@@ -28,16 +31,54 @@ const Login = () => {
           }
     }
 
+    const handleSignUp=async()=>{
+      try{
+       const res= await axios.post(BASE_URL+"/signup" ,{firstName,lastName,emailId,password},{withCredentials:true})
+       dispatch(addUser(res.data.data))
+        navigate("/profile")
+      }
+      catch(err)
+      {
+      console.log(err)
+      }
+    }
+
 
 
   return (
     <div className="flex justify-center my-10">
         <div className="card bg-base-300 w-96 shadow-xl">
     <div className="card-body">
-      <h2 className="card-title justify-center ">Login</h2>
+      <h2 className="card-title justify-center ">{toggleform ? "signUp" : "Login"}</h2>
 
     <div>
-    <label className="form-control w-full max-w-xs my-2">
+      {
+        toggleform && <>
+        <label className="form-control w-full max-w-xs my-2">
+             <div className="label">
+               <span className="label-text">firstName</span>
+             </div>
+           <input 
+           type="text"  
+           value={firstName}
+           className="input input-bordered w-full max-w-xs px-2 py-1" 
+           onChange={(e)=>setFirstName(e.target.value)}
+           />
+   </label>
+   <label className="form-control w-full max-w-xs my-2">
+             <div className="label">
+               <span className="label-text">lastName</span>
+             </div>
+           <input 
+           type="text"  
+           value={lastName}
+           className="input input-bordered w-full max-w-xs px-2 py-1" 
+           onChange={(e)=>setLastName(e.target.value)}
+           />
+   </label>
+        </>
+      }
+   <label className="form-control w-full max-w-xs my-2">
              <div className="label">
                <span className="label-text">Email Id</span>
              </div>
@@ -54,7 +95,7 @@ const Login = () => {
                <span className="label-text">Password</span>
             </div>
           <input 
-          type="text"   
+          type="password"   
           value={password}
           className="input input-bordered w-full max-w-xs px-2 py-1" 
           onChange={(e)=>setPassword(e.target.value)}
@@ -63,15 +104,13 @@ const Login = () => {
 </div>
   <p className="text-red-500 ml-4">{error}</p>
       <div className="card-actions justify-center mt-3">
-        <button
-         className="btn btn-primary "
-         onClick={handleLogin}
-         >
-            Login
-        </button>
-      </div>
+        <button className="btn btn-primary text-bold" onClick={ toggleform ? handleSignUp : handleLogin}>{toggleform ? "signUp" : "Login"}</button>
+       </div>
+       <p className="mt-5 ml-16">{ toggleform ? "Already a user? " : "New to devTinder? " }<span className="font-bold cursor-pointer" onClick={()=>{setToggleForm(!toggleform)}}
+        >{toggleform ? "Login" : "SignUp"}</span>
+        </p>
     </div>
-  </div>
+  </div> 
     </div>
    
   )
