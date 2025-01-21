@@ -30,7 +30,19 @@
   - accept/reject connection request
   - send/ignore user card from feed
   - created signup 
-  
+  # Deployment
+  - Signup on AWS.
+  - launch instance.
+  - chmod 400 <secret>.pem
+  - ssh -i "devTinder-secret.pem" ubuntu@ec2-13-60-23-11.eu-north-1.compute.amazonaws.com.
+  - install node version .
+  - 
+  # Razorpay gateway integration
+  - sign up razorpay and complete KYC.
+  - created UI for premium page.
+  - creating an API for create order in backend.
+
+
    
 
 ## Cant navigate to other routes without loging in---------
