@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addConnections } from "../utils/connectionSlice"
+import { Link } from "react-router"
 
 const Connections = () => {
     const dispatch=useDispatch()
@@ -25,7 +26,7 @@ const Connections = () => {
      if(!connections) return null
      if(connections.length ===0) return <h1 className="flex justify-center items-center font-bold text-3xl text-gray-500 mt-48">No connections Found</h1>
   return (
-    <div className="text-center my-10">
+    <div className="text-center my-10 h-auto">
         <h1 className="font-bold text-3xl ">Connections</h1>
 
 
@@ -33,7 +34,7 @@ const Connections = () => {
         {connections?.map((connection) =>{
           const{firstName,lastName,photoUrl,age,gender,about,_id}=connection
           return(
-              <div key={_id} className="flex ml-96 bg-gray-600 mt-10 w-1/2 rounded-lg h-[150px] p-3">
+              <div key={_id} className="flex ml-96 bg-gray-600 mt-10 w-1/2 rounded-lg  p-3">
                 <div>
                   <img className="w-32 h-32 rounded-full" alt="photo" src={photoUrl}/>
                 </div>
@@ -43,7 +44,9 @@ const Connections = () => {
                 {age && <p><span className="font-semibold text-md mt-2">Age : </span>{age}</p>}
                 {gender && <p><span className="font-semibold text-md mt-2">Gender : </span>{gender}</p>}
                 </div>
-                
+
+                <Link to={"/chat/"+_id}><button className="btn btn-primary ml-24 mt-10">chat</button></Link>
+              
               </div>
 )})}
 

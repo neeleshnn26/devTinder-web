@@ -73,6 +73,17 @@
         proxy_cache_bypass $http_upgrade;
     }   
 
+# scheduling cron jobs in nodejs
+
+- installing node-cron.
+- Learning about cron expression syntaxx. crontab.guru.
+- Schedulre a job.
+- date-fns.
+- Find all the unique ids , who have got connection request in previous day.
+- Explore queue mechanism to send bulk emails.
+- Amazon bulk email SES.
+- make send Email function dynamic.
+- bee queue and bull npm packages,
 
   
 
@@ -84,7 +95,13 @@
   - creating an API for create order in backend.
   - 
 
-
+# Real time chat using Websocket(socket.io)
+- Build the UI for a chat window on /chat/:targetUserId
+- Setup socket.io in backend.
+- npm i socket.io ( in backend)
+- const http=require("http)
+- const server = http.createServer(app)
+- 
    
 
 ## Cant navigate to other routes without loging in---------
