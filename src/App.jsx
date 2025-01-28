@@ -55,7 +55,7 @@ import Error from "./components/Error";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import Premium from "./components/Premium";
-import Chat from "./components/chat";
+import Chat from "./components/Chat";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./utils/appStore";
 
